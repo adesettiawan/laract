@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NewsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,6 +16,7 @@ use Inertia\Inertia;
 |
 */
 
+//Frontend
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -24,16 +26,12 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/homepage', [NewsController::class, 'index'])->name('homepage');
+
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/homepage', function () {
-    return Inertia::render('Homepage', [
-        'title' => 'Learn Laravel React',
-        'description' => 'Selamat datang'
-
-    ]);
-});
 
 require __DIR__ . '/auth.php';
