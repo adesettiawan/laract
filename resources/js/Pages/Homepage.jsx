@@ -41,7 +41,7 @@ const Homepage = (props) => {
                                   </div>
                               );
                           })
-                        : ""}
+                        : "Data tidak ditemukan!"}
                 </div>
             </div>
         </>
