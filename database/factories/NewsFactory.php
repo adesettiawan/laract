@@ -24,7 +24,7 @@ class NewsFactory extends Factory
         return [
             'title' => $title,
             'slug' => $slug,
-            'category' => fake()->title(),
+            'category' => fake()->text(15),
             'description' => fake()->paragraph(2, true),
             'author' => fake()->name(),
         ];
