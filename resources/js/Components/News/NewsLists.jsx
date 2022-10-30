@@ -1,10 +1,12 @@
 import React from "react";
 
 const newsCard = (news) => {
-    console.log(news);
     return news.map((newsData, i) => {
         return (
-            <div className="card w-full lg:w-96 bg-base-100 shadow-xl mt-5">
+            <div
+                className="card w-full lg:w-96 bg-base-100 shadow-xl mt-5"
+                key={i}
+            >
                 <figure>
                     <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
                 </figure>

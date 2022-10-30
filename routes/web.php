@@ -17,7 +17,9 @@ use Inertia\Inertia;
 */
 
 //Frontend
-Route::get('/', function () {
+Route::get('/', [NewsController::class, 'index'])->name('homepage');
+
+Route::get('/welcome', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -25,9 +27,6 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
-Route::get('/homepage', [NewsController::class, 'index'])->name('homepage');
-
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
