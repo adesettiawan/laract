@@ -18,6 +18,7 @@ use Inertia\Inertia;
 
 //Frontend
 Route::get('/', [NewsController::class, 'index'])->name('homepage');
+Route::post('/news', [NewsController::class, 'store']);
 
 Route::get('/welcome', function () {
     return Inertia::render('Welcome', [

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Resources\NewsCollection;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class NewsController extends Controller
@@ -40,7 +43,22 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => ['required', 'max:255'],
+            'description' => ['required'],
+            'category' => ['required', 'max:100'],
+        ]);
+
+        News::create(
+            [
+                'title' => $request->title,
+                'slug' => Str::slug($request->title),
+                'description' => $request->description,
+                'category' => $request->category,
+                'author' => auth()->user()->email,
+            ]
+        );
+        return redirect()->route('dashboard');
     }
 
     /**
