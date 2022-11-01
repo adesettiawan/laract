@@ -58,7 +58,7 @@ class NewsController extends Controller
                 'author' => auth()->user()->email,
             ]
         );
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('message', 'News created successfully...');
     }
 
     /**
